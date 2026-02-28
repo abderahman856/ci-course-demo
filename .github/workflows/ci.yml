@@ -1,18 +1,5 @@
-name: CI Structure Demo
+- name: Build Docker image
+  run: docker build -t myapp:${{ github.sha }} .
 
-on:
-  push:
-
-jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Say Hello
-        run: echo "Job 1 running"
-
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Say Hello After Job1
-        run: echo "Job 2 running after Job 1"
+- name: Push Docker image
+  run: echo "Simulate push to registry"
