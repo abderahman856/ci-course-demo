@@ -1,4 +1,4 @@
-name: CI Structure Demo
+name: CI Structure Demo (Fixed)
 
 on:
   push:
@@ -14,9 +14,10 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Say Hello After Job1
-        run: echo "Job 2 running after Job 1"
-
+      # FIX: You MUST bring the code to this new runner!
+      - name: Check out repository
+        uses: actions/checkout@v4
+    
       - name: Build Docker image
         run: docker build -t myapp:${{ github.sha }} .
 
